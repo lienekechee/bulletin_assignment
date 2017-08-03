@@ -1,0 +1,78 @@
+body {
+    background-image: url('../images/diamond.jpg');
+    height: 100%; 
+    background-position: 0% 0%;
+    background-repeat: no-repeat;
+    background-size: 100% auto;
+}
+
+
+#circles {
+	height: 480px;
+	width: 480px;
+	border-radius:50%;
+	-khtml-border-radius:50%;
+	-moz-border-radius:50%;		
+	-webkit-border-radius:50%;
+	opacity: .8;
+	background-color: cyan;
+	text-align: center;
+	display: block;
+	margin: auto;
+	margin-top: 80px;
+}
+
+
+.bubble {
+	height: 200px;
+	width: 200px;
+	border-radius:50%;
+	-khtml-border-radius:50%;
+	-moz-border-radius:50%;		
+	-webkit-border-radius:50%;
+	opacity: .6;
+	background-color: red;
+	display: inline-grid;
+	text-align: center;
+	color: white;
+	font-family: arial;
+	margin: 20px 20px 20px 20px;
+	-webkit-transition: background-color 1s, color 1s, opacity 1s;
+	transition: background-color 1s, color 1s, opacity 1s;
+
+}
+
+.bubble:hover {
+	background-color: cyan;
+	color: red;
+	opacity: .7;
+}
+
+input {
+
+	width: 75%;
+	margin-top: 100px;
+	background-color: yellow;
+	border: none;
+
+
+}
+
+input#msgSubject {
+	background-color: magenta;
+}
+
+input#msgBody {
+	height: 250px;
+	margin-top: 0;
+	margin-bottom: 0px;
+
+}
+
+input[type=submit]{
+	background-color: red;
+	margin-top: 2px;
+}
+
+
+
