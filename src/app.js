@@ -16,7 +16,7 @@ app.use(cookieParser())
 require('dotenv').config()
 
 //connecting to database
-const { Client } = require('pg')
+const Client = require('pg')
 const client = new Client({
 	database: 'bulletinboard',
 	port: process.env.databaseport,
