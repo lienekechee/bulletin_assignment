@@ -5,10 +5,12 @@ html
 		link(rel='stylesheet', type='text/css', href='/css/main.css')
 		link(href="https://fonts.googleapis.com/css?family=Gloria+Hallelujah|Permanent+Marker|Plaster|Press+Start+2P|Shrikhand|VT323" rel="stylesheet")
 	body
+		div.background
 		#circles
-			form(action= '/postMsg', method= 'POST', id= "msgForm")
-				input(type="text" name="msgSubject" placeholder= "Subject" id="msgSubject")
-				input(type="text" name="msgBody" placeholder= "What's on your mind?" id="msgBody")
-				input(type="submit" value= "Post message")
+			div#formSquare
+				form(action= '/postMsg', method= 'POST', id= "msgForm")
+					input(type="text" name="msgSubject" placeholder= "Subject" id="msgSubject")
+					input(type="text" name="msgBody" placeholder= "What's on your mind?" id="msgBody")
+					input(type="submit" value= "Post message")
 		
 

@@ -3,26 +3,48 @@ const app = express()
 const pug = require('pug')
 const bodyParser = require('body-parser')
 const path = require('path')
+const cookieParser = require('cookie-parser')
+const port= process.env.port
+
 
 app.set('views', './views')
 app.set('view engine', 'pug')
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, '../public')));
 console.log (__dirname)
+app.use(cookieParser())
+require('dotenv').config()
 
 //connecting to database
 const { Client } = require('pg')
 const client = new Client({
 	database: 'bulletinboard',
+	port: process.env.databaseport,
 	host: 'localhost',
 	user: process.env.POSTGRES_USER
 })
 
 client.connect()
 
+
+
 //Get request rendering index.pug
 app.get('/', function (req, res){
 	res.render ('index')
+})
+
+app.get('/getCookie', (req,res)=>{
+	console.log(req.cookies)
+
+	res.send("Cookie read")
+})
+
+app.get('/setCookie', (req, res)=>{
+
+	res.cookie('name', 'tobi', { 
+		domain: '.example.com', 
+		path: '/admin', 
+		secure: true });
 })
 
 //Post request insert messages into database
@@ -33,12 +55,12 @@ app.post('/postMsg', function(req, res){
 	console.log (data)
 
 	//inserting data into messages table
-	client.query('insert into messages(title, body) values ($1, $2)', [data.title, data.body], (err, res)=>{
-		console.log(err ? err.stack : res.rows)
+	client.query('insert into messages(title, body) values ($1, $2)', [data.title, data.body], (err, result)=>{
+		console.log(err ? err.stack : result.rows)
 
 	});
 
-	res.redirect('bulletin')
+	res.redirect('/bulletin')
 
 });
 
@@ -56,7 +78,7 @@ app.get('/bulletin', function(req, res){
 });
 
 
-app.listen(3000, function(){
+app.listen(port, function(){
 	console.log('ITS WORKING!')
 })
 
