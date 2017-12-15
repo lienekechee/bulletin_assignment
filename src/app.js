@@ -5,6 +5,7 @@ const bodyParser = require('body-parser')
 const path = require('path')
 const cookieParser = require('cookie-parser')
 const port= process.env.port
+const pg= require('pg')
 
 
 app.set('views', './views')
@@ -16,7 +17,7 @@ app.use(cookieParser())
 require('dotenv').config()
 
 //connecting to database
-const Client = require('pg')
+const Client = pg.Client
 const client = new Client({
 	database: 'bulletinboard',
 	port: process.env.databaseport,
